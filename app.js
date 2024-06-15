@@ -44,6 +44,16 @@ app.get("/diet_plan", (req, res) => {
   res.render("diet_plan");
 });
 
+app.get("/about", (req, res) => {
+  // Fetch data from the database
+  res.render("about");
+});
+
+app.get("/contact", (req, res) => {
+  // Fetch data from the database
+  res.render("contact");
+});
+
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
