@@ -57,4 +57,4 @@ qa_chain = RetrievalQA.from_chain_type(
 )
 
 result = qa_chain({"query": question})
-result["result"]
+print(result["result"])
