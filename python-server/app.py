@@ -35,7 +35,6 @@ vector_index = Chroma.from_texts(texts, embeddings).as_retriever(search_kwargs={
 template = """You are a helpful Nutritionist Assistant who makes diet plans according to the user's need. Use the following pieces of context to make a daily diet plan with the food suggestions addhearing to the concerns. Keep the answer as concise as possible.
     {context}
     write a clear diet plan in a short concise manner.
-
     these are the requirements for the diet: {question}
     """
 
@@ -45,9 +44,6 @@ question = """    Make the diet plan such that it can fix this problem: {issue}
 
     and the food prefenrence is: {pref}"""
 
-user_issue = "I am iron deficient"
-user_cuise = "Indian"
-user_pref = "Vegetarian"
     
 app = Flask(__name__)
 flask_cors.CORS(app)
@@ -55,6 +51,10 @@ flask_cors.CORS(app)
 @app.post("/predict")
 def predict():
     text = request.get_json().get("message")
+    print(text)
+    user_issue = "I am iron deficient"
+    user_cuise = "Indian"
+    user_pref = "Vegetarian"
     question.format(issue= user_issue, cusine= user_cuise, pref= user_pref)
     QA_CHAIN_PROMPT = PromptTemplate.from_template(template)# Run chain
     qa_chain = RetrievalQA.from_chain_type(

@@ -134,7 +134,7 @@
                 <div class="col-md-12">
                     <div class="product-filters">
 						<div class="contact-form">
-							<form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+							<form method="post" action="/generate" id="fruitkha-contact" >
 								<h4>Your Problem</h4>
 								<p>
 									<input class="problem" type="text" placeholder="Type Your Problems here" name="problems" id="problems">
@@ -154,7 +154,7 @@
 									</select>
 								
 								
-									<select id="country">
+									<select id="country" name="country">
 										<option value="">--select Country--</option>
 										<option value="AF">Afghanistan</option>
 										<option value="AX">Åland Islands</option>
@@ -407,11 +407,17 @@
 										<option value="ZW">Zimbabwe</option>
 									</select>
 								</p>
-								<p><input type="submit" value="Submit"></p>
-								
-								<p><textarea name="message" id="message" cols="30" rows="10" placeholder="Your Diet Plan will appear here"></textarea></p>
-								
+								<button type="submit" class="btn btn-primary submit">
+									Save and Next
+								  </button>
 							</form>
+							<p id="result">
+								<% if (result) { %>
+								  Result from Flask: <%= result %>
+								<% } else { %>
+								  No result yet.
+								<% } %>
+							  </p>
 						</div>
                     </div>
                 </div>

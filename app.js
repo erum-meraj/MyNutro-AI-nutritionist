@@ -6,7 +6,7 @@ const logger = require("morgan");
 const session = require("express-session");
 
 const indexRouter = require("./routes/index");
-// If you uncomment this line, ensure the corresponding route file exists
+// Uncomment if you have a form route
 // const formRouter = require("./routes/form");
 
 const app = express();
@@ -32,27 +32,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 app.use("/", indexRouter);
-// Uncomment this if the form route exists
+// Uncomment if you have a form route
 // app.use("/form", formRouter);
-app.get("/", (req, res) => {
-  // Fetch data from the database
-  res.render("index");
-});
-
-app.get("/diet_plan", (req, res) => {
-  // Fetch data from the database
-  res.render("diet_plan");
-});
-
-app.get("/about", (req, res) => {
-  // Fetch data from the database
-  res.render("about");
-});
-
-app.get("/contact", (req, res) => {
-  // Fetch data from the database
-  res.render("contact");
-});
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
